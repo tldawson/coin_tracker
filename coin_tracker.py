@@ -84,6 +84,19 @@ class Py3status:
                 self._balance = 0
             return
 
+        def digibyte():
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            url = 'https://digiexplorer.info/api/addr/' \
+                    + self.address \
+                    + '/balance'
+            try:
+                req = Request(url, None, headers)
+                response = urlopen(req).read().decode()
+                self._balance = int(response)/10**8
+            except:
+                self._balance = 0
+            return
+
         def dogecoin():
             url = 'http://dogechain.info/chain/Dogecoin/q/addressbalance/' \
                     + self.address
@@ -172,6 +185,7 @@ class Py3status:
                  'bitcrystals': counterparty,
                  'counterparty': counterparty,
                  'databits': counterparty,
+                 'digibyte': digibyte,
                  'digixdao': erc20,
                  'dogecoin': dogecoin,
                  'ethereum': ethereum,

@@ -25,6 +25,7 @@ Coin options:
     - `bitcrystals` BitCrystals BCY  
     - `counterparty` Counterparty XCP  
     - `databits` Databits DTB  
+    - `digibyte` DigiByte DGB
     - `digixdao` DigixDAO DGD  
     - `dogecoin` Dogecoin DOGE  
     - `ethereum` Ethereum ETH  
