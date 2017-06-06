@@ -144,8 +144,6 @@ class Py3status:
 
             if self.coin == 'guppy':
                 divisor = 10**3
-            elif self.coin == 'wings':
-                divisor = 10**26
             else:
                 divisor = 10**18
 
