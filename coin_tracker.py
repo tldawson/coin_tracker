@@ -39,7 +39,8 @@ class Py3status:
 
 
     def on_click(self, event):
-        self.format, self.format_clicked = self.format_clicked, self.format
+        if event['button'] == 1:
+            self.format, self.format_clicked = self.format_clicked, self.format
 
 
     def _get_coin_info(self):
