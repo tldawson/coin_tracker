@@ -260,27 +260,18 @@ class Py3status:
 
 
     def _set_color(self):
-        if self.color:
-            return
-
-        if not self._percent_change:
-            self._percent_change = 0
-
-        if float(self._percent_change) > 0.5:
-            self.color = '#88ff88'
+        if float(self._percent_change) > 10.0:
+            self.color = '#00ff00'
         elif float(self._percent_change) > 5.0:
             self.color = '#44ff44'
-        elif float(self._percent_change) > 10.0:
-            self.color = '#00ff00'
-        elif float(self._percent_change) > 50.0:
-            self.color = '#ff00ff'
-
-        if float(self._percent_change) < 0.5:
-            self.color = '#ff8888'
-        elif float(self._percent_change) < -5.0:
-            self.color = '#ff4444'
+        elif float(self._percent_change) > 0.5:
+            self.color = '#88ff88'
         elif float(self._percent_change) < -10.0:
             self.color = '#ff0000'
+        elif float(self._percent_change) < -5.0:
+            self.color = '#ff4444'
+        elif float(self._percent_change) < -0.5:
+            self.color = '#ff8888'
         return
 
 
