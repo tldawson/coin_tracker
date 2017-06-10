@@ -61,6 +61,19 @@ class Py3status:
 
 
     def _get_balance(self):
+        def ark():
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            url = 'https://explorer.ark.io/api/getAccount?address=' \
+                    + self.address
+            try:
+                req = Request(url, None, headers)
+                response = urlopen(req).read().decode()
+                data = json.loads(response)
+                self._balance = int(data['balance'])/10**8
+            except:
+                self._balance = 0
+            return
+
         def bitcoin():
             url = 'https://blockchain.info/q/addressbalance/' + self.address
             try:
@@ -178,8 +191,9 @@ class Py3status:
             return
 
 
-        COINS = {'augur': erc20,
-                 'aragon': erc20,
+        COINS = {'aragon': erc20,
+                 'ark': ark,
+                 'augur': erc20,
                  'bitcoin': bitcoin,
                  'bitcrystals': counterparty,
                  'counterparty': counterparty,

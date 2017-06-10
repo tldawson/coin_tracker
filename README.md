@@ -20,6 +20,7 @@ Format placeholders:
   
 Coin options:  
     - `aragon` Aragon ANT  
+    - `ark` Ark ARK  
     - `augur` Augur REP  
     - `bitcoin` Bitcoin BTC  
     - `bitcrystals` BitCrystals BCY  
