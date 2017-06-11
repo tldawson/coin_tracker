@@ -26,7 +26,7 @@ Coin options:
     - `bitcrystals` BitCrystals BCY  
     - `counterparty` Counterparty XCP  
     - `databits` Databits DTB  
-    - `digibyte` DigiByte DGB
+    - `digibyte` DigiByte DGB  
     - `digixdao` DigixDAO DGD  
     - `dogecoin` Dogecoin DOGE  
     - `ethereum` Ethereum ETH  
@@ -52,7 +52,7 @@ Coin options:
 Local currency options:  
     - `aud` Australian dollar A$  
     - `brl` Brazilian Real r$  
-    - `btc` Bitcoin Ƀ
+    - `btc` Bitcoin Ƀ  
     - `cad` Canadian dollar C$  
     - `chf` Swiss franc fr.  
     - `cny` Chinese yuan ¥  
