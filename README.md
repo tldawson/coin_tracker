@@ -32,6 +32,7 @@ Coin options:
     - `ethereum` Ethereum ETH  
     - `firstblood` FirstBlood 1ST  
     - `foldingcoin` FoldingCoin FLDC  
+    - `funfair` FunFair FUN  
     - `gnosis-gno` Gnosis GNO  
     - `golem-network-tokens` Golem GNT  
     - `guppy` Matchpool GUP  

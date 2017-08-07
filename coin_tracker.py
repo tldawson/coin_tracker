@@ -142,6 +142,7 @@ class Py3status:
                 'augur': '0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5',
                 'digixdao': '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a',
                 'firstblood': '0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7',
+                'funfair': '0x419d0d8bdd9af5e606ae2232ed285aff190e711b',
                 'gnosis-gno': '0x6810e776880c02933d47db1b9fc05908e5386b96',
                 'golem-network-tokens': \
                         '0xa74476443119A942dE498590Fe1f2454d7D4aC0d',
@@ -158,6 +159,8 @@ class Py3status:
 
             if self.coin == 'guppy':
                 divisor = 10**3
+            elif self.coin == 'funfair':
+                divisor = 10**8
             else:
                 divisor = 10**18
 
@@ -204,6 +207,7 @@ class Py3status:
                  'ethereum': ethereum,
                  'firstblood': erc20,
                  'foldingcoin': counterparty,
+                 'funfair': erc20,
                  'gnosis-gno': erc20,
                  'golem-network-tokens': erc20,
                  'guppy': erc20,
@@ -264,13 +268,13 @@ class Py3status:
             self.color = '#00ff00'
         elif float(self._percent_change) > 5.0:
             self.color = '#44ff44'
-        elif float(self._percent_change) > 0.5:
+        elif float(self._percent_change) > 0:
             self.color = '#88ff88'
         elif float(self._percent_change) < -10.0:
             self.color = '#ff0000'
         elif float(self._percent_change) < -5.0:
             self.color = '#ff4444'
-        elif float(self._percent_change) < -0.5:
+        elif float(self._percent_change) < 0:
             self.color = '#ff8888'
         return
 
