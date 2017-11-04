@@ -30,6 +30,7 @@ Coin options:
     - `digixdao` DigixDAO DGD  
     - `dogecoin` Dogecoin DOGE  
     - `ethereum` Ethereum ETH  
+    - `enjin-coin` Enjin Coin ENJ  
     - `firstblood` FirstBlood 1ST  
     - `foldingcoin` FoldingCoin FLDC  
     - `funfair` FunFair FUN  
@@ -79,4 +80,4 @@ coin_tracker {
 ```  
   
     **author** tldawson@github.io  
-    **donations**  0x00d50ABE465e6309066FfDeDeFb0aE6a708FEe6a    
+    **donations**  0xC0FfEE9f395D72CE06F76Da710E1459A2452184e
