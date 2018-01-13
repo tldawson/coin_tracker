@@ -83,6 +83,31 @@ class Py3status:
                 self._balance = 0
             return
 
+        def bitcoincash():
+            url = 'https://api.blockchair.com/' \
+                    + 'bitcoin-cash/dashboards/address/' \
+                    + self.address
+            try:
+                response = urlopen(url).read().decode()
+                data = json.loads(response)
+                self._balance = int(data['data'][0]['sum_value_unspent'])/10**8
+            except:
+                self._balance = 0
+            return
+
+        def cardano():
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            url = 'https://cardanoexplorer.com/api/addresses/summary/' \
+                    + self.address
+            try:
+                req = Request(url, None, headers)
+                response = urlopen(req).read().decode()
+                data = json.loads(response)
+                self._balance = int(data['Right']['caBalance']['getCoin'])/10**6
+            except:
+                self._balance = 0
+            return
+
         def counterparty():
             url = 'https://xchain.io/api/balances/' + self.address
             try:
@@ -94,6 +119,16 @@ class Py3status:
                     else:
                         if not self._balance:
                             self._balance = 0
+            except:
+                self._balance = 0
+            return
+
+        def dash():
+            url = 'https://explorer.dash.org/chain/Dash/q/addressbalance/' \
+                    + self.address
+            try:
+                response = urlopen(url).read().decode()
+                self._balance = float(response)
             except:
                 self._balance = 0
             return
@@ -136,12 +171,25 @@ class Py3status:
                 self._balance = 0
             return
 
+        def ethereum_classic():
+            url = 'https://api.gastracker.io/v1/addr/' \
+                    + self.address
+            try:
+                response = urlopen(url).read().decode()
+                data = json.loads(response)
+                self._balance = float(data['balance']['ether'])
+            except:
+                self._balance = 0
+            return
+
         def erc20():
             TOKENS = {
                 'aragon': '0x960b236A07cf122663c4303350609A66A7B288C0',
                 'augur': '0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5',
+                'binance-coin': '0xB8c77482e45F1F44dE1745F52C74426C631bDD52',
                 'digixdao': '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a',
                 'enjin-coin' : '0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c',
+                'eos' : '0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0',
                 'firstblood': '0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7',
                 'funfair': '0x419d0d8bdd9af5e606ae2232ed285aff190e711b',
                 'gnosis-gno': '0x6810e776880c02933d47db1b9fc05908e5386b96',
@@ -150,13 +198,18 @@ class Py3status:
                 'guppy': '0xf7b098298f7c69fc14610bf71d5e02c60792894c',
                 'iconomi': '0x888666CA69E0f178DED6D75b5726Cee99A87D698',
                 'melon': '0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1',
+                'omisego': '0xd26114cd6EE289AccF82350c8d8487fedB8A0C07',
                 'pluton': '0xD8912C10681D8B21Fd3742244f44658dBA12264E',
                 'rlc': '0x607F4C5BB672230e8672085532f7e901544a7375',
                 'round': '0x4993CB95c7443bdC06155c5f5688Be9D8f6999a5',
                 'singulardtv': '0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009',
+                'status': '0x744d70fdbe2ba4cf95131626614a1763df805b9e',
+                'storj': '0xb64ef51c888972c908cfacf59b47c1afbc0ab8ac',
                 'tokencard': '0xaaaf91d9b90df800df4f55c205fd6989c977e73a',
                 'swarm-city': '0xb9e7f8568e08d5659f5d29c4997173d84cdf2607',
-                'wings': '0x667088b212ce3d06a1b553a7221E1fD19000d9aF',}
+                'wings': '0x667088b212ce3d06a1b553a7221E1fD19000d9aF',
+                'xenon': '0xab95e915c123fded5bdfb6325e35ef5515f1ea69',
+                '0x': '0xe41d2489571d322189246dafa5ebde1f4699f498',}
 
             if self.coin == 'guppy':
                 divisor = 10**3
@@ -181,6 +234,69 @@ class Py3status:
                 self._balance = 0
             return
 
+        def neo():
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            url = 'https://neoscan.io/api/main_net/v1/get_balance/' \
+                    + self.address
+            try:
+                req = Request(url, None, headers)
+                response = urlopen(req).read().decode()
+                data = json.loads(response)
+                if self.coin == 'neo':
+                    self._balance = int(data['balance'][1]['amount'])
+                elif self.coin == 'gas':
+                    self._balance = float(data['balance'][0]['amount'])
+            except:
+                self._balance = 0
+            return
+
+        def lisk():
+            url = 'https://explorer.lisk.io/api/getAccount?address=' \
+                    + self.address
+            try:
+                response = urlopen(url).read().decode()
+                data = json.loads(response)
+                self._balance = int(data['balance'])/10**8
+            except:
+                self._balance = 0
+            return
+
+        def litecoin():
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            url = 'https://chain.so/api/v2/get_address_balance/LTC/' \
+                    + self.address
+            try:
+                req = Request(url, None, headers)
+                response = urlopen(req).read().decode()
+                data = json.loads(response)
+                self._balance = float(data['data']['confirmed_balance'])
+            except:
+                self._balance = 0
+            return
+
+        def ripple():
+            url = 'https://data.ripple.com/v2/accounts/' \
+                    + self.address \
+                    + '/balances'
+            try:
+                response = urlopen(url).read().decode()
+                data = json.loads(response)
+                self._balance = float(data['balances'][0]['value'])
+            except:
+                self._balance = 0
+            return
+
+        def stellar():
+            url = 'https://horizon.stellar.org/accounts/' \
+                    + self.address
+            try:
+                response = urlopen(url).read().decode()
+                data = json.loads(response)
+                self._balance = float(data['balances'][0]['balance'])
+            except:
+                self._balance = 0
+            return
+
         def waves():
             headers = {'User-Agent': 'Mozilla/5.0'}
             url = 'https://nodes.wavesnodes.com/addresses/balance/' \
@@ -198,15 +314,21 @@ class Py3status:
         COINS = {'aragon': erc20,
                  'ark': ark,
                  'augur': erc20,
+                 'binance-coin': erc20,
                  'bitcoin': bitcoin,
+                 'bitcoin-cash': bitcoincash,
                  'bitcrystals': counterparty,
+                 'cardano': cardano,
                  'counterparty': counterparty,
+                 'dash': dash,
                  'databits': counterparty,
                  'digibyte': digibyte,
                  'digixdao': erc20,
                  'dogecoin': dogecoin,
                  'enjin-coin': erc20,
+                 'eos': erc20,
                  'ethereum': ethereum,
+                 'ethereum-classic': ethereum_classic,
                  'firstblood': erc20,
                  'foldingcoin': counterparty,
                  'funfair': erc20,
@@ -214,18 +336,28 @@ class Py3status:
                  'golem-network-tokens': erc20,
                  'guppy': erc20,
                  'iconomi': erc20,
+                 'lisk': lisk,
+                 'litecoin': litecoin,
                  'melon': erc20,
+                 'neo': neo,
+                 'omisego': erc20,
                  'pepe-cash': counterparty,
                  'pluton': erc20,
                  'rare-pepe-party': counterparty,
+                 'ripple': ripple,
                  'rlc': erc20,
                  'round': erc20,
                  'singulardtv': erc20,
+                 'status': erc20,
+                 'stellar': stellar,
+                 'storj': erc20,
                  'storjcoin-x': counterparty,
                  'swarm-city': erc20,
                  'tokencard': erc20,
                  'waves': waves,
-                 'wings': erc20,}
+                 'wings': erc20,
+                 'xenon': erc20,
+                 '0x': erc20,}
         if self.coin in COINS:
             COINS[self.coin]()
         else:

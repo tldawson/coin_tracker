@@ -22,15 +22,21 @@ Coin options:
     - `aragon` Aragon ANT  
     - `ark` Ark ARK  
     - `augur` Augur REP  
+    - `binance-coin` Binance Coin BNB  
     - `bitcoin` Bitcoin BTC  
+    - `bitcoin-cash` Bitcoin Cash BCH  
     - `bitcrystals` BitCrystals BCY  
+    - `cardano` Cardano ADA  
     - `counterparty` Counterparty XCP  
+    - `dash` Dash DASH  
     - `databits` Databits DTB  
     - `digibyte` DigiByte DGB  
     - `digixdao` DigixDAO DGD  
     - `dogecoin` Dogecoin DOGE  
-    - `ethereum` Ethereum ETH  
     - `enjin-coin` Enjin Coin ENJ  
+    - `eos` EOS EOS  
+    - `ethereum` Ethereum ETH  
+    - `ethereum-classic` Ethereum Classic ETC  
     - `firstblood` FirstBlood 1ST  
     - `foldingcoin` FoldingCoin FLDC  
     - `funfair` FunFair FUN  
@@ -38,17 +44,25 @@ Coin options:
     - `golem-network-tokens` Golem GNT  
     - `guppy` Matchpool GUP  
     - `iconomi` Iconomi ICONOMI  
+    - `litecoin` Litecoin LTC  
     - `melon` Melon MLN  
+    - `neo` NEO NEO  
+    - `omisego` OmiseGO OMG  
     - `pepe-cash` Pepecash PEPECASH  
     - `pluton` Pluton PLU  
     - `rare-pepe-party` Rare Pepe Party RAREPEPEPRTY  
+    - `ripple` Ripple XRP  
     - `rlc` iExec RLC  
     - `round` Round ROUND  
     - `singulardtv` SingularDTV SINGLS  
+    - `status` Status SNT  
+    - `stellar` Stellar XLM  
+    - `storj` Storj STORJ  
     - `storjcoin-x` Storjcoin-X SJCX  
     - `swarm-city` Swarm City SWT  
     - `tokencard` TokenCard TKN  
     - `waves` Waves WAVES  
+    - `xenon` Xenon XNN  
     - `wings` Wings WINGS  
   
 Local currency options:  
