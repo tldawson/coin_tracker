@@ -186,10 +186,13 @@ class Py3status:
             TOKENS = {
                 'aragon': '0x960b236A07cf122663c4303350609A66A7B288C0',
                 'augur': '0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5',
+                'bancor': '0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c',
+                'basic-attention-token': '0x0d8775f648430679a709e98d2b0cb6250d2887ef',
                 'binance-coin': '0xB8c77482e45F1F44dE1745F52C74426C631bDD52',
                 'digixdao': '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a',
                 'enjin-coin' : '0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c',
                 'eos' : '0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0',
+                'ethlend' : '0x80fB784B7eD66730e8b1DBd9820aFD29931aab03',
                 'firstblood': '0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7',
                 'funfair': '0x419d0d8bdd9af5e606ae2232ed285aff190e711b',
                 'gnosis-gno': '0x6810e776880c02933d47db1b9fc05908e5386b96',
@@ -200,8 +203,10 @@ class Py3status:
                 'melon': '0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1',
                 'omisego': '0xd26114cd6EE289AccF82350c8d8487fedB8A0C07',
                 'pluton': '0xD8912C10681D8B21Fd3742244f44658dBA12264E',
+                'request-network': '0x8f8221afbb33998d8584a2b05749ba73c37a938a',
                 'rlc': '0x607F4C5BB672230e8672085532f7e901544a7375',
                 'round': '0x4993CB95c7443bdC06155c5f5688Be9D8f6999a5',
+                'salt': '0x4156D3342D5c385a87D264F90653733592000581',
                 'singulardtv': '0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009',
                 'status': '0x744d70fdbe2ba4cf95131626614a1763df805b9e',
                 'storj': '0xb64ef51c888972c908cfacf59b47c1afbc0ab8ac',
@@ -214,6 +219,8 @@ class Py3status:
             if self.coin == 'guppy':
                 divisor = 10**3
             elif self.coin == 'funfair':
+                divisor = 10**8
+            elif self.coin == 'salt':
                 divisor = 10**8
             else:
                 divisor = 10**18
@@ -230,22 +237,6 @@ class Py3status:
                 response = urlopen(url).read().decode()
                 data = json.loads(response)
                 self._balance = int(data['result'])/divisor
-            except:
-                self._balance = 0
-            return
-
-        def neo():
-            headers = {'User-Agent': 'Mozilla/5.0'}
-            url = 'https://neoscan.io/api/main_net/v1/get_balance/' \
-                    + self.address
-            try:
-                req = Request(url, None, headers)
-                response = urlopen(req).read().decode()
-                data = json.loads(response)
-                if self.coin == 'neo':
-                    self._balance = int(data['balance'][1]['amount'])
-                elif self.coin == 'gas':
-                    self._balance = float(data['balance'][0]['amount'])
             except:
                 self._balance = 0
             return
@@ -270,6 +261,22 @@ class Py3status:
                 response = urlopen(req).read().decode()
                 data = json.loads(response)
                 self._balance = float(data['data']['confirmed_balance'])
+            except:
+                self._balance = 0
+            return
+
+        def neo():
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            url = 'https://neoscan.io/api/main_net/v1/get_balance/' \
+                    + self.address
+            try:
+                req = Request(url, None, headers)
+                response = urlopen(req).read().decode()
+                data = json.loads(response)
+                if self.coin == 'neo':
+                    self._balance = int(data['balance'][1]['amount'])
+                elif self.coin == 'gas':
+                    self._balance = float(data['balance'][0]['amount'])
             except:
                 self._balance = 0
             return
@@ -314,6 +321,8 @@ class Py3status:
         COINS = {'aragon': erc20,
                  'ark': ark,
                  'augur': erc20,
+                 'bancor': erc20,
+                 'basic-attention-token': erc20,
                  'binance-coin': erc20,
                  'bitcoin': bitcoin,
                  'bitcoin-cash': bitcoincash,
@@ -329,9 +338,11 @@ class Py3status:
                  'eos': erc20,
                  'ethereum': ethereum,
                  'ethereum-classic': ethereum_classic,
+                 'ethlend': erc20,
                  'firstblood': erc20,
                  'foldingcoin': counterparty,
                  'funfair': erc20,
+                 'gas': neo,
                  'gnosis-gno': erc20,
                  'golem-network-tokens': erc20,
                  'guppy': erc20,
@@ -344,9 +355,11 @@ class Py3status:
                  'pepe-cash': counterparty,
                  'pluton': erc20,
                  'rare-pepe-party': counterparty,
+                 'request-network': erc20,
                  'ripple': ripple,
                  'rlc': erc20,
                  'round': erc20,
+                 'salt': erc20,
                  'singulardtv': erc20,
                  'status': erc20,
                  'stellar': stellar,

@@ -22,6 +22,8 @@ Coin options:
     - `aragon` Aragon ANT  
     - `ark` Ark ARK  
     - `augur` Augur REP  
+    - `bancor` Bancor BNT  
+    - `basic-attention-token` Basic Attention Token BAT  
     - `binance-coin` Binance Coin BNB  
     - `bitcoin` Bitcoin BTC  
     - `bitcoin-cash` Bitcoin Cash BCH  
@@ -37,9 +39,11 @@ Coin options:
     - `eos` EOS EOS  
     - `ethereum` Ethereum ETH  
     - `ethereum-classic` Ethereum Classic ETC  
+    - `ethlend` Ethlend LEND  
     - `firstblood` FirstBlood 1ST  
     - `foldingcoin` FoldingCoin FLDC  
     - `funfair` FunFair FUN  
+    - `gas` Gas GAS  
     - `gnosis-gno` Gnosis GNO  
     - `golem-network-tokens` Golem GNT  
     - `guppy` Matchpool GUP  
@@ -51,9 +55,11 @@ Coin options:
     - `pepe-cash` Pepecash PEPECASH  
     - `pluton` Pluton PLU  
     - `rare-pepe-party` Rare Pepe Party RAREPEPEPRTY  
+    - `request-network` Request Network REQ  
     - `ripple` Ripple XRP  
     - `rlc` iExec RLC  
     - `round` Round ROUND  
+    - `salt` Salt SALT  
     - `singulardtv` SingularDTV SINGLS  
     - `status` Status SNT  
     - `stellar` Stellar XLM  
