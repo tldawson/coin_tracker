@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 '''
-Displays wallet balance and value in local currency
+Displays wallet balance and value in local currency. This code was hastily
+update to work with as many coins as possible... Sorry for the mess.
 
 Configuration parameters:
     - coin              : coin to display, supported coins are listed in COINS table
