@@ -1,6 +1,8 @@
 # coin_tracker  
   
-Display information about coin balances, prices, and percent change in price. Designed for [i3status](https://github.com/i3/i3status) using [py3status](https://github.com/ultrabug/py3status).  
+*This module is unmaintained and non-working. When it was created, there weren't any modules to check the balances or prices of coins other than Bitcoin. Since then, it has been superceded by the [coin_balance](https://py3status.readthedocs.io/en/latest/modules.html#coin-balance) and [coin_market](https://py3status.readthedocs.io/en/latest/modules.html#coin-market) modules that come bundled with py3status.*
+
+Display information about coin balances, prices, and percent change in price. Designed for [py3status](https://github.com/ultrabug/py3status).  
   
 Configuration parameters:  
     - `coin` Required. Which coin to display info about.  
